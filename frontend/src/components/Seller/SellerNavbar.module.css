@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;;
+    font-size: 1.5rem;
+}
+.minicontainer{
+    display: flex;
+    justify-content: space-between;
+}
+.minicontainer>div{
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.home{
+    cursor: pointer;
+}
+    
