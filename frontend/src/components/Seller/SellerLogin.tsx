@@ -1,13 +1,15 @@
 import {useState} from 'react'
 import SellerNavbar from './SellerNavbar'
-
+import { useSellerLogin } from '../../customhooks/useSellerLogin'
   const SellerLogin = () => {
+    const [error,isloading,sellerlogin]=useSellerLogin()
     const [SellerInfo,setSellerInfo]=useState({
       email:"",
       password:""
     })
-    const login=()=>{
-      console.log(SellerInfo)
+    const login=()=>
+    {
+      sellerlogin(SellerInfo.email,SellerInfo.password)
     }
   return (
     <div>
@@ -29,8 +31,9 @@ import SellerNavbar from './SellerNavbar'
           ></input>
         </div>
         <div>
-          <button onClick={login}>Login</button>
+          <button onClick={login} disabled={isloading}>Login</button>
         </div>
+        <div>{error}</div>
       </div>
     </div>
   )

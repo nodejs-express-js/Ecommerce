@@ -1,27 +1,33 @@
-import { createContext,useReducer } from "react";
+import { createContext,useEffect,useReducer } from "react";
 
-type sellerStateType1={
+export type sellerStateType1={
 email:string,
 password:string,
 }
 type sellerStateType=sellerStateType1|null
 type sellerActionType1={
-type:string,
+type:"LOGIN",
 payload:sellerStateType
+}
+type sellerActionType2={
+    type:"LOGOUT",
 }
 type childrentype={
     children:React.ReactNode
 }
+type sellerActionType=sellerActionType1|sellerActionType2
+
 type contextValueType={
     state:sellerStateType,
-    dispatch:React.Dispatch<sellerActionType1>
+    dispatch:React.Dispatch<sellerActionType>
 }
-type sellerActionType=sellerActionType1
 const sellerReducer=(state:sellerStateType,action:sellerActionType)=>{
     switch(action.type){
         case "LOGIN":
-            return state;
+            localStorage.setItem("seller", JSON.stringify(action.payload));
+            return action.payload;
         case "LOGOUT":
+            localStorage.removeItem("seller");
             return null
         default:
             return state;
@@ -32,6 +38,21 @@ const sellerReducer=(state:sellerStateType,action:sellerActionType)=>{
 export const SellerContext=createContext<null|contextValueType>(null);
 const Seller = ({children}:childrentype) => {
     const [state,dispatch]=useReducer(sellerReducer,null);
+    useEffect(()=>{
+        const curr=localStorage.getItem("seller")
+        if(curr!==null)
+        {
+           
+            try{
+                const seller=JSON.parse(curr)
+                dispatch({type:"LOGIN",payload:seller});
+            }
+            catch(err){
+                console.log(err)
+            }
+
+        }
+    },[])
   return (
     <SellerContext.Provider value={{state,dispatch}}>
         {children}
