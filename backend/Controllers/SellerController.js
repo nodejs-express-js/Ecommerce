@@ -3,8 +3,8 @@ const validator=require("validator")
 const bcrypt=require("bcrypt");
 const jwt=require("jsonwebtoken")
 require("dotenv").config()
-const createToken=(id,email)=>{
-const token=jwt.sign({id,email},process.env.JSON_SECRET_KEY,{expiresIn:'3d'})
+const createToken=(id)=>{
+const token=jwt.sign({id},process.env.JSON_SECRET_KEY,{expiresIn:'3d'})
     return token;
 }
 const sellerSignupHelper = async(firstName,lastName,email,password)=>{
@@ -40,7 +40,7 @@ try{
      firstName:firstName, lastName:lastName
     , email:email, password:hashPassword
     });
-    const token=createToken(seller.dataValues.id,seller.dataValues.email)
+    const token=createToken(seller.dataValues.id)
     res.status(200).json({email,token})
 }
 catch(err){
@@ -71,7 +71,7 @@ const sellerLogin=async(req,res)=>{
         if(!isMatch){
             throw new Error("password does not match")
         }
-        const token=createToken(seller.dataValues.id,seller.dataValues.email)
+        const token=createToken(seller.dataValues.id)
         res.status(200).json({email,token})
      }
      catch(err){
