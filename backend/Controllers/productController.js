@@ -69,7 +69,7 @@ const productPutController=async(req,res)=>{
             productName,productImage,price,quantity},
             {where:{id:id,sellerId:req.seller.id}}
         )
-        res.status(200).json({product:updatedproduct})
+        res.status(200).json({message:"product updated successfully"})
     }
     catch(e){
         res.status(404).json({message:e.message});
