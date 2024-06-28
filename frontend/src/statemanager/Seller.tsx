@@ -2,7 +2,7 @@ import { createContext,useEffect,useReducer } from "react";
 
 export type sellerStateType1={
 email:string,
-password:string,
+token:string,
 }
 type sellerStateType=sellerStateType1|null
 type sellerActionType1={
@@ -42,15 +42,13 @@ const Seller = ({children}:childrentype) => {
         const curr=localStorage.getItem("seller")
         if(curr!==null)
         {
-           
             try{
                 const seller=JSON.parse(curr)
                 dispatch({type:"LOGIN",payload:seller});
             }
             catch(err){
-                console.log(err)
+                console.log()
             }
-
         }
     },[])
   return (

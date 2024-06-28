@@ -36,7 +36,7 @@ const useSellerSignup = () => {
   }
 
   
-  return [servererror,isloading,sellersignup]
+  return [servererror,isloading,sellersignup] 
 
 }
 

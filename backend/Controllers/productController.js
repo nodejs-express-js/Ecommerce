@@ -18,7 +18,10 @@ const productGetController=async(req,res)=>{
 const productPostController=async(req,res)=>{
     try{
         const {productName,productImage,price,quantity }=req.body;
-        if(!productName || !productImage || !price || !quantity){
+        if(!productName || !productImage){
+            throw new Error("please enter all the fields")
+        }
+        if(price==undefined || quantity==undefined || price==null || quantity==null){
             throw new Error("please enter all the fields")
         }
       
@@ -59,10 +62,11 @@ const productPutController=async(req,res)=>{
         if(!productImage){
             productImage=product.dataValues.productImage
         }
-        if(!price){
+        
+        if(price==undefined || price==null){
             price=product.dataValues.price
         }
-        if(!quantity){
+        if(quantity==undefined || quantity==null){
             quantity=product.dataValues.quantity
         }
         const updatedproduct=await db.Product.update({

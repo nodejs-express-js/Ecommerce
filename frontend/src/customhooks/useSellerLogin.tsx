@@ -25,7 +25,6 @@ export const useSellerLogin = () => {
         const sellerinfo=await response.json();
 
         if(response.ok){  
-          console.log(sellerinfo)
         dispatch({type:"LOGIN",payload:sellerinfo});  
         }
         else{

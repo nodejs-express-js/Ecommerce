@@ -1,0 +1,9 @@
+.Container{
+    display: flex;
+    justify-content: space-around;
+}
+.Container>div{
+    margin: 1rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
