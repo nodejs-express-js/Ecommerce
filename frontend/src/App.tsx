@@ -3,18 +3,26 @@ import './App.module.css'
 import SellerHome from './components/Seller/SellerHome'
 import SellerLogin from './components/Seller/SellerLogin'
 import SellerSignup from './components/Seller/SellerSignup'
+import BuyerHome from './components/Buyer/BuyerHome'
 import {Routes,Route} from 'react-router-dom'
 import useSeller from './customhooks/useSeller'
 import { Navigate } from 'react-router-dom'
+import PageNotFound from './components/PageNotFound'
+import BuyersLogin from './components/Buyer/BuyersLogin'
+import BuyersSignup from './components/Buyer/BuyersSignup'
+
 function App() {
   const {state}=useSeller()
   return (
     <div>
       <Routes>
-
-        <Route path="/" element={<SellerHome />} />
-        <Route path="/sellerloginpage" element={state?.email ? <Navigate to="/"></Navigate> : <SellerLogin/>  } />
-        <Route path="/sellersignuppage" element={state?.email ? <Navigate to="/"></Navigate> : <SellerSignup/>} />
+        <Route path="/" element={<BuyerHome/>} />
+        <Route path='/login' element={<BuyersLogin/>}></Route>
+        <Route path='/signup' element={<BuyersSignup/>}></Route>
+        <Route path="/seller" element={<SellerHome />} />
+        <Route path="/sellerloginpage" element={state?.email ? <Navigate to="/seller"></Navigate> : <SellerLogin/>  } />
+        <Route path="/sellersignuppage" element={state?.email ? <Navigate to="/seller"></Navigate> : <SellerSignup/>} />
+        <Route path='*' element={<PageNotFound />}></Route>
       </Routes>
     </div>
   )

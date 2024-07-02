@@ -5,7 +5,7 @@ const SellerNavbar = () => {
   const {state,dispatch}=useSeller();
   const navigate=useNavigate();
   const home=()=>{
-    navigate("/")
+    navigate("/seller")
   }
   const login=()=>
   {
@@ -16,7 +16,7 @@ const SellerNavbar = () => {
   }
   const logout=()=>{
     dispatch({type: "LOGOUT"})
-    navigate("/")
+    navigate("/seller")
   }
   return (
     <div className={Styles.container}>

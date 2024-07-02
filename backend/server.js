@@ -13,6 +13,7 @@ app.use("/seller",sellerRouter)
 app.use("/product",sellerMiddleware)
 app.use("/product",productRoutes)
 app.use("/customer",customerRoutes)
+
 app.listen(process.env.PORT, ()=>{
     console.log("server is listening on port " + process.env.PORT)
 })
