@@ -10,15 +10,17 @@ import { Navigate } from 'react-router-dom'
 import PageNotFound from './components/PageNotFound'
 import BuyersLogin from './components/Buyer/BuyersLogin'
 import BuyersSignup from './components/Buyer/BuyersSignup'
+import useBuyer from './customhooks/useBuyer'
 
 function App() {
   const {state}=useSeller()
+  const {state:buyerstate}=useBuyer();
   return (
     <div>
       <Routes>
         <Route path="/" element={<BuyerHome/>} />
-        <Route path='/login' element={<BuyersLogin/>}></Route>
-        <Route path='/signup' element={<BuyersSignup/>}></Route>
+        <Route path='/login' element={buyerstate?.email ? <Navigate to="/"></Navigate>:<BuyersLogin/>}></Route>
+        <Route path='/signup' element={buyerstate?.email ? <Navigate to="/"></Navigate> :<BuyersSignup/>}></Route>
         <Route path="/seller" element={<SellerHome />} />
         <Route path="/sellerloginpage" element={state?.email ? <Navigate to="/seller"></Navigate> : <SellerLogin/>  } />
         <Route path="/sellersignuppage" element={state?.email ? <Navigate to="/seller"></Navigate> : <SellerSignup/>} />

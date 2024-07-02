@@ -1,12 +1,14 @@
 import BuyersNavbar from "./BuyersNavbar"
 import { useState } from "react"
+import useBuyerLogin from "../../customhooks/useBuyerLogin"
 const BuyersLogin = () => {
   const [buyersInfo,setBuyersInfo]=useState({
     email:"",
     password:""
   })
+  const [error,isloading,buyerlogin]=useBuyerLogin();
   const login=()=>{
-    console.log(buyersInfo)
+    buyerlogin(buyersInfo.email,buyersInfo.password);
   }
   return (
     <div>
@@ -20,8 +22,9 @@ const BuyersLogin = () => {
             <label>Password</label>
             <input type="password" value={buyersInfo.password} onChange={(e)=>{setBuyersInfo({...buyersInfo,password:e.target.value})}}></input>
           </div>
-          <button onClick={login}>login</button>
+          <button onClick={login} disabled={isloading} >login</button>
         </div>
+        <div>{error}</div>
     </div>
   )
 }

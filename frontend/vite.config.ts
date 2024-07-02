@@ -6,7 +6,8 @@ export default defineConfig({
   server:{
     proxy:{
       '/seller':"http://localhost:8000",
-      '/product':"http://localhost:8000"
+      '/product':"http://localhost:8000",
+      '/customer':"http://localhost:8000"
     }
   },
   plugins: [react()],
