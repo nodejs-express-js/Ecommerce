@@ -1,4 +1,3 @@
-import {productType} from '../../../statemanager/Product'
 import { useState } from 'react';
 import useSellerProduct from '../../../customhooks/useSellerProduct';
 import useSeller from '../../../customhooks/useSeller';
@@ -7,6 +6,16 @@ const useSellerAdd = () => {
   const [isloading,setIsLoading]=useState(false);
   const {dispatch}=useSellerProduct();
   const {state}=useSeller();
+   type productType={
+    productName:string,
+    productImage:string,
+    price:number,
+    quantity:number,
+    sellerId?:number,
+    createdAt?:string,
+    updatedAt?:string,
+    }
+    
   const createProduct=async(product:productType)=>{
     setIsLoading(true)
     setError("")
@@ -14,7 +23,7 @@ const useSellerAdd = () => {
         if(!state?.token){
             throw new Error("please login to add a new product");
         }
-        const response=await fetch(import.meta.env.VITE_SELLER_PRODUCT_URL,{
+        const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_SELLER_PRODUCT_URL,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",

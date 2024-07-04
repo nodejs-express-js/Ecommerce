@@ -12,7 +12,7 @@ export const useSellerLogin = () => {
         setisloading(true);
         setError("")
         
-        const response=await fetch(import.meta.env.VITE_SELLER_LOGIN_URL,{
+        const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_SELLER_LOGIN_URL,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -38,5 +38,5 @@ export const useSellerLogin = () => {
     setisloading(false)
   }
 
-  return [error,isloading,sellerlogin]
+  return [error,isloading,sellerlogin] as [string,boolean,(arg1:string,arg2:string)=>void]
 }

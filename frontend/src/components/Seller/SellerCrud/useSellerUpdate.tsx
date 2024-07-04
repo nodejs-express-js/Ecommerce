@@ -11,7 +11,7 @@ const {dispatch}=useSellerProduct();
     try{
         setIsLoading(true)
         setError("")
-        const response=await fetch(import.meta.env.VITE_SELLER_PRODUCT_URL,
+        const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_SELLER_PRODUCT_URL,
         {
             method:"PUT",
             headers:{

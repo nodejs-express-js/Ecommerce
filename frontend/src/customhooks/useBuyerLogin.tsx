@@ -8,7 +8,7 @@ const useBuyerLogin = () => {
     try{
       setIsLoading(true)
       setError("")
-      const response=await fetch("/customer/login",{
+      const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_CUSTOMER_LOGIN_URL,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"

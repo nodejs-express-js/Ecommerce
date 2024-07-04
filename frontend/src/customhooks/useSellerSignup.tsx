@@ -9,7 +9,7 @@ const useSellerSignup = () => {
     setisLoading(true)
     setError("")
     try{
-        const response=await fetch(import.meta.env.VITE_SELLER_SIGNUP_URL,{
+        const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_SELLER_SIGNUP_URL,{
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const useSellerSignup = () => {
   }
 
   
-  return [servererror,isloading,sellersignup] 
+  return [servererror,isloading,sellersignup] as [string,boolean,(arg1:string,arg2:string,arg3:string,arg4:string)=>void]
 
 }
 

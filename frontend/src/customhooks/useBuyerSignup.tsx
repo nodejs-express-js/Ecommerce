@@ -8,7 +8,7 @@ const useBuyerSignup = () => {
     try{
         setIsLoading(true)
         setError("")
-        const response=await fetch("/customer/signup",{
+        const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_CUSTOMER_SIGNUP,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"

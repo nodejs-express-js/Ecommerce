@@ -11,7 +11,6 @@ const BuyersSignup = () => {
   });
   const [error,isloading,buyerSignup,setError]=useBuyerSignup()
   const signup=async()=>{
-    console.log(buyersInfo)
     if(!buyersInfo.firstName || !buyersInfo.lastName || !buyersInfo.email || !buyersInfo.password || !buyersInfo.confirmPassword){
       setError("All fields are required")
       return;

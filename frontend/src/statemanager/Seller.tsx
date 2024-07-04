@@ -47,8 +47,8 @@ const Seller = ({children}:childrentype) => {
                 dispatch({type:"LOGIN",payload:seller});
             }
             catch(err){
-                console.log()
-            }
+                console.error("no previous seller")
+             }
         }
     },[])
   return (

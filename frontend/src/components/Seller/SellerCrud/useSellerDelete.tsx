@@ -13,7 +13,7 @@ const useSellerDelete = () => {
         if(!state?.token){
             throw new Error("please login to delete product")
         }
-        const response=await fetch(import.meta.env.VITE_SELLER_PRODUCT_URL,
+        const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_SELLER_PRODUCT_URL,
             {
                 method:"DELETE",
                 headers:{

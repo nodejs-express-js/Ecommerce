@@ -2,7 +2,7 @@ import { createContext,useEffect,useReducer } from "react"
 import useSeller from "../customhooks/useSeller"
 
 export type productType={
-id?:number,
+id:number,
 productName:string,
 productImage:string,
 price:number,
@@ -96,7 +96,7 @@ const Product = ({children}:childrentype) => {
             }
         dispatch({type:"SET_LOADING",payload:true})
         dispatch({type:"SET_ERROR",payload:""})
-        const response=await fetch(import.meta.env.VITE_SELLER_PRODUCT_URL,
+        const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_SELLER_PRODUCT_URL,
             {
                 method:"GET",
                 headers:{

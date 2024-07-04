@@ -6,16 +6,19 @@ import { BrowserRouter } from 'react-router-dom'
 import Seller from './statemanager/Seller.tsx'
 import Product from './statemanager/Product.tsx'
 import Buyer from './statemanager/Buyer.tsx'
+import BuyerProduct from './statemanager/BuyerProduct.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Buyer>
-        <Seller>
-            <Product> 
-              <App />
-            </Product>
-        </Seller>
-      </Buyer>
+        <BuyerProduct>  
+        <Buyer>
+              <Seller>
+              <Product> 
+                  <App />
+              </Product>
+              </Seller>
+        </Buyer>
+        </BuyerProduct>
     </BrowserRouter>
   </React.StrictMode>,
 )

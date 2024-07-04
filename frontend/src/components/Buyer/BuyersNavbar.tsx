@@ -4,6 +4,9 @@ import useBuyer from "../../customhooks/useBuyer"
 const BuyersNavbar = () => {
     const {state,dispatch}=useBuyer()
     const navigate=useNavigate()
+    const home=()=>{
+        navigate("/")
+    }
     const login=()=>{
         navigate("/login")
     }
@@ -19,7 +22,7 @@ const BuyersNavbar = () => {
     }
   return (
     <div className={Styles.container}>
-        <div className={Styles.home}>Ecommerce</div>
+        <div className={Styles.home} onClick={home}>Ecommerce</div>
         <div className={Styles.miniContainer}>
             <div>{state?.email ?
                 <div>
