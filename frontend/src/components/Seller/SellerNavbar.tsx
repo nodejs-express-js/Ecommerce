@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom'
 const SellerNavbar = () => {
   const {state,dispatch}=useSeller();
   const navigate=useNavigate();
+  const Buyer=()=>{
+    navigate("/")
+  }
   const home=()=>{
     navigate("/seller")
   }
@@ -23,15 +26,27 @@ const SellerNavbar = () => {
         <div onClick={home} className={Styles.home}>Sellers</div>
         {!state?.email ?
         <div className={Styles.minicontainer}>
+          <div>
           <div onClick={login} className={Styles.login}>Login</div>
           <div onClick={signup} className={Styles.signup}>Signup</div>
+          </div>
+            <div onClick={Buyer} className={Styles.Buyer}>
+              Try Shopping
+            </div>
         </div>
         :
           <div>
+            <div>
+          
             <div>{state?.email}</div>
             <div className={Styles.logout} onClick={logout}>logout</div>
+            </div>
+            <div onClick={Buyer} className={Styles.Buyer}>
+              Try Shopping
+            </div>
           </div>
         }
+        
         
     </div>
   )

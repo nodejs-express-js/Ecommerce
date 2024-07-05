@@ -9,7 +9,7 @@ type BuyerProductContextType={
     dispatch:React.Dispatch<buyerProductAction>
  
 }
-type buyerProductType={
+export type buyerProductType={
     id:number,
     productName:string,
     productImage:string,

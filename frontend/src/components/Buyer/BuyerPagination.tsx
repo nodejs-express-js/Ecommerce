@@ -21,7 +21,6 @@ const BuyerPagination = ({currentPage,setCurrentPage}:children) => {
     const response=await fetch(import.meta.env.VITE_API_BASE_URL+import.meta.env.VITE_NON_LOGIN_NO_OF_PAGES)
     const data=await response.json();
     if(response.ok){
-        data.numberOfPages=10
       setNumberOfPages(data.numberOfPages);
       if(data.numberOfPages<3){
         setArrayTillLargestNumber(data.numberOfPages)
@@ -34,10 +33,7 @@ const BuyerPagination = ({currentPage,setCurrentPage}:children) => {
       setNumberOfPages(0)
     }
   }
-  const print=()=>{
-    console.log(pagearray,pagearray.length)
-  }
-
+  
   const prev=()=>{
     if(currentPage>1){
       setCurrentPage(currentPage-1)
@@ -96,7 +92,6 @@ const BuyerPagination = ({currentPage,setCurrentPage}:children) => {
           })}
           <button onClick={next} className={Styles.greaterThan}>next</button>
         </div>
-        <button onClick={print}>print</button>
 
       </div>
       }
