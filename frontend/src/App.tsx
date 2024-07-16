@@ -11,14 +11,18 @@ import PageNotFound from './components/PageNotFound'
 import BuyersLogin from './components/Buyer/BuyersLogin'
 import BuyersSignup from './components/Buyer/BuyersSignup'
 import useBuyer from './customhooks/useBuyer'
-
+import BuyersProduct from './components/Buyer/BuyersProduct'
+import { productType } from './statemanager/Product'
+import { useState } from 'react'
 function App() {
   const {state}=useSeller()
   const {state:buyerstate}=useBuyer();
+  const [product,setProduct]=useState({} as productType);
   return (
     <div>
       <Routes>
-        <Route path="/" element={<BuyerHome/>} />
+        <Route path="/" element={<BuyerHome setProduct={setProduct}/>} />
+        <Route path="/product" element={<BuyersProduct item={product}/>} />
         <Route path='/login' element={buyerstate?.email ? <Navigate to="/"></Navigate>:<BuyersLogin/>}></Route>
         <Route path='/signup' element={buyerstate?.email ? <Navigate to="/"></Navigate> :<BuyersSignup/>}></Route>
         <Route path="/seller" element={<SellerHome />} />

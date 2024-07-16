@@ -10,6 +10,7 @@ quantity:number,
 sellerId?:number,
 createdAt?:string,
 updatedAt?:string,
+views?:number
 }
 
 

@@ -2,7 +2,8 @@ import BuyersNavbar from './BuyersNavbar'
 import BuyerPagination from './BuyerPagination'
 import {  useState } from 'react'
 import BuyerProducts from  './BuyersProducts'
-const BuyerHome = () => {
+import { productType } from '../../statemanager/Product'
+const BuyerHome = ({setProduct}:{setProduct:React.Dispatch<React.SetStateAction<productType>>}) => {
   const [currentPage,setCurrentPage]=useState(0)
 
   
@@ -10,7 +11,7 @@ const BuyerHome = () => {
   return (
     <div>
       <BuyersNavbar></BuyersNavbar>
-      <BuyerProducts currentPage={currentPage}></BuyerProducts>
+      <BuyerProducts currentPage={currentPage} setProduct={setProduct}></BuyerProducts>
       <BuyerPagination currentPage={currentPage} setCurrentPage={setCurrentPage}></BuyerPagination>
     </div>
   )

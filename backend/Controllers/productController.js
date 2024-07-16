@@ -52,7 +52,6 @@ const productPutController=async(req,res)=>{
             throw new Error("please provide a valid id")
         }
         const product=await db.Product.findOne({where:{id:id, sellerId:req.seller.id}})
-        console.log(product,id)
         if(!product){
             throw new Error("product does not exist")
         }

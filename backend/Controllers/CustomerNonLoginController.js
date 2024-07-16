@@ -5,6 +5,7 @@ const pageSize=process.env.PAGE_SIZE
 const getAllProducts=async(req,res)=>{
 try{
     const {pageNumber}=req.params;
+    console.log(pageNumber)
     if(!pageNumber){
         throw new Error("Please provide a page number")
     }

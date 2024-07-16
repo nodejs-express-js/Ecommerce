@@ -1,8 +1,3 @@
-.image{
-    width:400px;
-    height:200px;
-    object-fit: cover;
-}
 .Container{
     cursor: pointer;
     margin:0.1rem;
@@ -11,4 +6,9 @@
 }
 .minicontainer{
     padding-left:0.8rem;
+}
+.image{
+    width:400px;
+    height:200px;
+    object-fit: cover;
 }
